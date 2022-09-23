@@ -1,0 +1,26 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: "db"
+      DB_USER: "dbuser"
+      DB_PASSWORD: "dbpasswd"
+      DB_NAME: "digitalmoney-db"
+      DB_PORT: 3306
+    depends_on:
+      - "db"
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: digitalmoney-db
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbpasswd
+      MYSQL_ROOT_PASSWORD: rootpasswd
+    volumes:
+      - dbdata:/var/lib/mysql
+volumes:
+  dbdata:
