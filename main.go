@@ -18,7 +18,6 @@ func main() {
 
 func initRouter() *gin.Engine {
 	router := gin.Default()
-	///////////////////////////////////////////// soy del primer commit
 	router.GET("/ping", controllers.Ping)
 	api := router.Group("/api")
 	{
